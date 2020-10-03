@@ -10,6 +10,12 @@ pipeline {
                  '''
              }
          }
+		 stage('BuildDocker') {
+             steps {
+                 sh 'echo "Building Docker Image"'
+                 sh 'docker build --tag=udacityfinal .'
+             }
+         }
 
 		}
 	}         
