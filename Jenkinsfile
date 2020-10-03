@@ -10,6 +10,12 @@ pipeline {
                  '''
              }
          }
+		 stage('DockerLint') {
+             steps {
+                 sh 'echo "Checking DockerFile"'
+                 sh 'hadolint Dockerfile'
+             }
+         }
 		 stage('BuildDocker') {
              steps {
                  sh 'echo "Building Docker Image"'
