@@ -19,7 +19,7 @@ pipeline {
 		 stage('BuildDocker') {
              steps {
                  sh 'echo "Building Docker Image"'
-                 sh 'docker build --tag=udacityfinal:${buildNumber} .'
+                 sh 'docker build --tag="udacityfinal:${buildNumber}" .'
              }
          }
 
