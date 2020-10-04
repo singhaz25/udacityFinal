@@ -22,7 +22,14 @@ pipeline {
                  sh "docker build --tag=udacityfinal:${BUILD_NUMBER} ."
              }
          }
+		 stage('Docker hub upload') {
+             steps {
+                    withDockerRegistry([ credentialsId: "DockerHubCredentials", url: "" ]) {
+						sh 'docker push amar2507/udacityfinal:${BUILD_NUMBER}'
 
+             }
+         }
 		}
-	}         
+	}  
+}	
 
