@@ -24,9 +24,9 @@ pipeline {
          }
 		 stage('Docker hub upload') {
              steps {
-					sh "docker tag udacityfinal:${BUILD_NUMBER} udacityfinal:${BUILD_NUMBER}"
+					sh "docker tag udacityfinal:${BUILD_NUMBER} amar2507/udacityfinal:${BUILD_NUMBER}"
                     withDockerRegistry([ credentialsId: "DockerHubCredentials", url: "" ]) {
-						sh 'docker push udacityfinal:${BUILD_NUMBER}'
+						sh 'docker push amar2507/udacityfinal:${BUILD_NUMBER}'
 
              }
          }
