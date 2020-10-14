@@ -35,7 +35,7 @@ pipeline {
             steps {
                 kubernetesDeploy(
                     kubeconfigId: 'k8sconfig',
-                    configs: 'kubernetes/deployment.yml',
+                    configs: 'kubernetes/deployment.yaml',
                     enableConfigSubstitution: true
                 )
             }
