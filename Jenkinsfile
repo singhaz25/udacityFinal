@@ -31,11 +31,24 @@ pipeline {
              }
          }
 		}
-		 stage('Deploy on kubernetes') {
+		/**
+		
+		Kubernetes deployment requires Jenkins slave configured -https://issues.jenkins-ci.org/browse/JENKINS-62954
+		 stage('Deploy on kubernetes using plugin') {
             steps {
                 kubernetesDeploy(
                     kubeconfigId: 'k8sconfig',
-                    configs: 'kubernetes/deployment.yaml',
+                    configs: 'kubernetes /deployment.yaml',
+                    enableConfigSubstitution: true
+                )
+            }
+		}*/
+		
+		stage('Deploy Kubernetes with kubectl installed on jenkins servers') {
+            steps {
+                kubernetesDeploy(
+                    kubeconfigId: 'k8sconfig',
+                    configs: 'kubernetes /deployment.yaml',
                     enableConfigSubstitution: true
                 )
             }
