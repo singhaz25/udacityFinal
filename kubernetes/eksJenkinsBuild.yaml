@@ -1,0 +1,22 @@
+apiVersion: eksctl.io/v1alpha5
+
+kind: ClusterConfig
+
+metadata:   
+        name: eksJenkins-eksctl   
+        region: us-east-1
+        version: "1.17"
+
+availabilityZones: ["us-east-1a", "us-east-1b", "us-east-1c"]
+
+managedNodeGroups: 
+        - name: nodegroup   
+          desiredCapacity: 3
+          instanceType: t2.micro
+          ssh:     
+                allow: true     
+                publicKeyName: eksJenkinsBuild
+
+               
+secretsEncryption:
+        keyARN: arn:aws:kms:us-east-1:432679596033:key/3757c92f-bafe-45b0-8f40-4bdfc3c2f86a
