@@ -46,10 +46,7 @@ pipeline {
 		
 		stage('Deploy Kubernetes with kubectl installed on jenkins servers') {
             steps {
-                kubernetesDeploy(
-                    kubeconfigId: 'k8sconfig',
-                    configs: 'kubernetes /deployment.yaml',
-                    enableConfigSubstitution: true
+				sh "kubectl apply -f kubernetes/deployment.yaml"
                 )
             }
 		}
