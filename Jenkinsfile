@@ -47,9 +47,8 @@ pipeline {
 		stage('Deploy Kubernetes with kubectl installed on jenkins servers') {
             steps {
 				sh "kubectl apply -f kubernetes/deployment.yaml"
-                )
             }
 		}
-	}  
+	} 
 }	
 
