@@ -43,7 +43,7 @@ pipeline {
                     enableConfigSubstitution: true
                 )
             }
-		}
+		}*/
 		
 		stage('Deploy Kubernetes with kubectl installed on jenkins servers') {
             steps {
@@ -51,7 +51,7 @@ pipeline {
 				sh "kubectl apply -f kubernetes/deployment.yaml"
 				sh "kubectl apply -f kubernetes/service.yaml"
             }
-		} */
+		} 
 	} 
 }	
 
