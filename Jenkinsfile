@@ -1,11 +1,12 @@
 pipeline {
      agent any
      stages {
-         stage('Build') {
+         stage('Build package') {
              steps {
-                 sh 'echo "Inject build details"'
+                 sh 'echo "Inject build details into node package and Kubernetes deployment script "'
                  sh '''
-                     sed -i -e "s/@BuildNumber@/${BUILD_NUMBER}/; s/@GIT_COMMIT@/${GIT_COMMIT}/; s#@GIT_URL@#'${GIT_URL}'#;" testProj/index.js
+                     sed -i -e "s/@BuildNumber@/${BUILD_NUMBER}/; s/@GIT_COMMIT@/${GIT_COMMIT}/;" testProj/index.js
+					 sed -i -e "s/@BuildNumber@/${BUILD_NUMBER}/;" kubernetes/deployment.yaml
 					 cat testProj/index.js
                  '''
              }
@@ -46,6 +47,7 @@ pipeline {
 		
 		stage('Deploy Kubernetes with kubectl installed on jenkins servers') {
             steps {
+				
 				sh "kubectl apply -f kubernetes/deployment.yaml"
 				sh "kubectl apply -f kubernetes/service.yaml"
             }

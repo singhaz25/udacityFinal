@@ -21,7 +21,7 @@ spec:
         app: udacityfinal-nodejs
     spec:
       containers:
-      - image: amar2507/udacityfinal:19
+      - image: amar2507/udacityfinal:@BuildNumber@
         imagePullPolicy: Always
         name: udacityfinal-nodejs
         ports:

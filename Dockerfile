@@ -4,7 +4,7 @@ RUN mkdir -p /src
 
 WORKDIR /src
 
-COPY testProj/* /src/
+copy testProj/* /src
 
 RUN npm install
 
