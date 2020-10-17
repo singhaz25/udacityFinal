@@ -5,7 +5,7 @@ pipeline {
              steps {
                  sh 'echo "Inject build details"'
                  sh '''
-                     sed -i -e "s/@BuildNumber@/${BUILD_NUMBER}/; s/@GIT_COMMIT@/${GIT_COMMIT}/; s/@GIT_URL@/'${GIT_URL}'/;" testProj/index.js
+                     sed -i -e "s/@BuildNumber@/${BUILD_NUMBER}/; s/@GIT_COMMIT@/${GIT_COMMIT}/; s#@GIT_URL@#'${GIT_URL}'#;" testProj/index.js
 					 cat testProj/index.js
                  '''
              }
