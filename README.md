@@ -3,11 +3,9 @@ Continuous Deployment pipeline for Nodejs applications using rolling deployment 
 
 ### Application
 Create Nodejs / Express application which listenes on port 3000. It exposes two REST API endpoint 
-		a) / 		(Brief description of project)
-			res.send("Udacity Final project by Amarinder v2 ");
-		b) /about 	(UdacityFinal project Jenkins BUILD_NUMBER and GIT_COMMITGIT_COMMIT number.
-			app.get('/about', function(req, res){ res.send('Udacity Final Jenkins Build @BuildNumber@ ,  Git repo version @GIT_COMMIT@');
-});
+* / 		(Brief description of project) res.send("Udacity Final project by Amarinder v2 ");
+* /about 	(UdacityFinal project Jenkins BUILD_NUMBER and GIT_COMMITGIT_COMMIT number.)
+	app.get('/about', function(req, res){ res.send('Udacity Final Jenkins Build @BuildNumber@ ,  Git repo version @GIT_COMMIT@');
 
 Application is Docker containerised using 'node:10' base container image.
 
