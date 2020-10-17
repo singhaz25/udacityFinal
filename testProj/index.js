@@ -6,7 +6,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/about', function(req, res){
-	res.send('Udacity Final Jenkins Build @BuildNumber@ ,  Git repo version @GIT_COMMIT@ );
+	res.send('Udacity Final Jenkins Build @BuildNumber@ ,  Git repo version @GIT_COMMIT@');
 });
 
 app.listen(3000);
