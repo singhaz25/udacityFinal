@@ -5,8 +5,8 @@ pipeline {
              steps {
                  sh 'echo "Inject build details"'
                  sh '''
-                     echo "Multiline shell steps works too"
-                     ls -lah
+                     sed -i -e "s/@BuildNumber@/${BUILD_NUMBER}/; s/@GIT_COMMIT@/${GIT_COMMIT}/; s/@GIT_URL@/${GIT_URL}/;" testProj/index.js
+					 cat testProj/index.js
                  '''
              }
          }
