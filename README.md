@@ -1,16 +1,31 @@
 Description
 Continuous Deployment pipeline for Nodejs applications using rolling deployment strategy. Continuous Integration is managed using Jenkins, demonstrating application build step, Docker file linting, container image creation and publish built container to the Docker Hub repository. Docker container are then deployed to Kubernetes cluster created using AWS EKS. 
 
-Steps:
-	Create Nodejs / Express application which listenes on port 80. It exposes two API endpoint a) Brief description of project b) UdacityFinal project Jenkins build number and build date. 
-	Nodejs application is then containerised using 'node:10' base container image.
-	Hadolint is used to lint Dockerfile used to create image 
-	Build docker image
-	Push docker image to the registry
-	Apply k8s deployment (yaml)
-	Application deployment
-	Load balancer service
-	Update k8s deployment with specific docker image tag
-	Wait for the pods update to finish
-	Service deployment using internal Load Balancing
+Application 
+Create Nodejs / Express application which listenes on port 3000. It exposes two REST API endpoint 
+		a) / 		(Brief description of project)
+			res.send("Udacity Final project by Amarinder v2 ");
+		b) /about 	(UdacityFinal project Jenkins BUILD_NUMBER and GIT_COMMITGIT_COMMIT number.
+			app.get('/about', function(req, res){ res.send('Udacity Final Jenkins Build @BuildNumber@ ,  Git repo version @GIT_COMMIT@');
+});
 
+Application is Docker containerised using 'node:10' base container image.
+
+Jenkins Pipeline  Steps:
+	1) Inject build details (BUILD_NUMBER and GIT_COMMITGIT_COMMIT ) into Nodejs package.
+
+	2)	Hadolint is used to lint Dockerfile used to create image 
+
+	3)	Build docker image
+
+	4) Push docker image to the Docker Hub registry
+
+	5) Apply new container image to Kubernetes cluster  - image: amar2507/udacityfinal:@BuildNumber@
+
+	6) Apply k8s service  using internal Load Balancing - it maps port: 80 to container port: 3000
+
+Jenkins server is configured to connect with Kubeernetes cluster using command line 'kubectl' binary. Steps 
+	Switch to jenkins user - 'sudo -i -u jenkins'
+	Copy Kube config file into .kube/config folder  -  cp /home/ubuntu/.kube/config ~/.kube/config
+ 
+ 
