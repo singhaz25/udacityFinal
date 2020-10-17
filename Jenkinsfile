@@ -3,7 +3,7 @@ pipeline {
      stages {
          stage('Build') {
              steps {
-                 sh 'echo "Hello World AP"'
+                 sh 'echo "Inject build details"'
                  sh '''
                      echo "Multiline shell steps works too"
                      ls -lah
