@@ -8,6 +8,7 @@ pipeline {
                      sed -i -e "s/@BuildNumber@/${BUILD_NUMBER}/; s/@GIT_COMMIT@/${GIT_COMMIT}/;" testProj/index.js
 					 sed -i -e "s/@BuildNumber@/${BUILD_NUMBER}/;" kubernetes/deployment.yaml
 					 cat testProj/index.js
+					 cat kubernetes/deployment.yaml
                  '''
              }
          }
